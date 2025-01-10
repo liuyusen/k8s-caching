@@ -49,5 +49,14 @@ public class StockService {
         }
         return imageBytes;
     }
+
+    public void flushAllDatabases() {
+        var factory = redisTemplate.getConnectionFactory();
+        if (factory != null) {
+            factory.getConnection().flushAll();
+        } else {
+            throw new IllegalStateException("Redis connection factory not initialized");
+        }
+    }
 }
  

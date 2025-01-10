@@ -38,4 +38,10 @@ public class StockController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
     }
+
+    @GetMapping("/flushAll")
+    @Timed(description = "Time spent getting stock price", histogram = true)
+    public void flushAllStocks() {
+        stockService.flushAllDatabases();
+    }
 } 

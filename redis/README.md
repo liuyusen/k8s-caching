@@ -9,7 +9,7 @@ docker build -t redis-tls:7.4.1 .
 docker run -d --name redis -p 6379:6379 -e REDIS_PASSWORD=changeit redis-tls:7.4.1 --tls-port 6379 --port 0 --tls-cert-file /usr/local/etc/redis/redis.crt --tls-key-file /usr/local/etc/redis/redis.key --tls-ca-cert-file /usr/local/etc/redis/ca.crt --requirepass changeit --tls-auth-clients no
 
 redis-cli --tls --cert /usr/local/etc/redis/redis.crt --key /usr/local/etc/redis/redis.key --cacert /usr/local/etc/redis/redis.crt -a changeit
-redis-cli -h 172.17.0.3 --tls --cert ./redis/redis.crt --key ./redis/redis.key --cacert ./redis/redis.crt -a changeit
+redis-cli -h redis --tls --cert ./redis/redis.crt --key ./redis/redis.key --cacert ./redis/redis.crt -a changeit
 
 # Convert the certificate to a truststore (redis.jks)
 keytool -import \
