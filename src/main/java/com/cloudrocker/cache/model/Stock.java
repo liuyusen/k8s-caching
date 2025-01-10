@@ -6,16 +6,16 @@ import org.springframework.data.redis.core.RedisHash;
 @RedisHash("stock")
 public class Stock {
     @Id
-    private String symbol;
+    private String ticker;
     private String quote;
 
     // Getters and Setters
-    public String getSymbol() {
-        return symbol;
+    public String getTicker() {
+        return ticker;
     }
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
+    public void setTicker(String ticker) {
+        this.ticker = ticker;
     }
 
     public String getQuote() {
